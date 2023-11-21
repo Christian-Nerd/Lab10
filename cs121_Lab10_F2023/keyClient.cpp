@@ -1,20 +1,7 @@
-//*****************************************************************
-//  Programmer: Trey Davis
-//  Instructor: B.J Streller
-//  Course: CS121
-//  Date Created: 11/21/23
-//  Input Files: keys.txt and values.txt 
-//  Output Files: None
-//  Date Modified: 11/21/23
-//  Purpose: Find the index of each element of a set of intger keys in a value set.
-//****************************************************************
-#ifndef keySearch.h
-#define
 #include<fstream>  // For file stream manipulation
 #include<iostream> // For cin & cout
 #include<stdlib.h> // Streller you said always include this
 using namespace std;
-
 //****************************************************************
 // Function Name: SortArray
 // Purpose: Sort array in ascenstion using selection sort
