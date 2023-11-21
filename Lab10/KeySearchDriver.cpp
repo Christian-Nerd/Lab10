@@ -9,8 +9,12 @@
 //  Purpose: Find the index of each element of a set of keys in a value.
 //****************************************************************
 
+#include "KeySearch.h"
 int main()
 {
+    fstream ValueFile, KeyFile;
+    ValueFile.open(GetKeyFile().c_str(), ios::in | ios::out);
+    KeyFile.open(GetValueFile().c_str(), ios::in | ios::out);
 
     return 0;
 }
