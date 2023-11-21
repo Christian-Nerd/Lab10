@@ -9,7 +9,7 @@ using namespace std;
 //     Input: Integer unsorted array 
 //     Input & Output: None
 //     Output: None
-// Return Value: None
+// Return Value: Void
 // Non-local variables used: 
 // Functions Called: std::swap & std::sizeof
 //****************************************************************
@@ -55,9 +55,9 @@ string GetKeyFile()
 }
 
 //****************************************************************
-// Function Name: GetKeyFile
+// Function Name: GetValueFile
 // Parameters: None
-// Return Value: File name of keyfile
+// Return Value: File name of valuefile
 // Non-local variables used: None lol
 // Functions Called: none
 //****************************************************************
@@ -68,5 +68,38 @@ string GetValueFile()
     cin >> KeyFileName;
     //Return value gotten
     return KeyFileName;
+}
+
+//****************************************************************
+// Function Name: Binary Search
+// Purpose: Search the array for a specific key value and return it's location
+// Parameters:
+//    Input: Left Bound, Right Bound, Key
+//    Input & Output: Integer Array
+//    Output: 
+// Return Value: int 
+// Non-local Variables Used: None
+// Functions Called: std::swap & std::sizeof()
+//****************************************************************
+void BinarySearch( int Key, int Left, int Right, int[] List)
+{
+    //int Mid = (Left + Right)/2; // The middle of the List.
+    while(Left <= Right)
+    {
+        int Mid = (Left + Right)/2; // The middle of the List.
+        if(Key == List[Mid])
+            return Mid;
+        else if(Key > List[Mid])
+        {
+            Left  = Mid + 1;
+            continue;
+        }
+        else if(Key < List[Mid])
+        {
+            Right = List[Mid] - 1;
+            continue;
+        }
+    }
+    return -1; // This mean it isn't in the list
 }
 
