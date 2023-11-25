@@ -18,8 +18,8 @@ int main()
     int SortedList[SIZE];
     // Find the keys and values make a asorted array with the values and find if the keys are in the array
     ValueFile.open(GetValueFile().c_str(), ios::in | ios::out); // Open file
-    CheckIfValidFile(ValueFile, 'v'); // Error check ValueFile
-    KeyFile.open(GetKeyFile().c_str(), ios::in | ios::out); // Error check KeyFile
+    CheckIfValidFile(ValueFile, 'v');
+    KeyFile.open(GetKeyFile().c_str(), ios::in | ios::out);
     CheckIfValidFile(KeyFile, 'k');
     MakeValueArray(SortedList, SIZE, ValueFile);
     SortArray(SortedList, SIZE);

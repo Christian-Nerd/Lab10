@@ -1,3 +1,13 @@
+//*****************************************************************
+//  Programmer: Trey Davis
+//  Instructor: B.J Streller
+//  Course: CS121
+//  Date Created: 11/21/23
+//  Input Files: keys.txt and values.txt 
+//  Output Files: None
+//  Date Modified: 11/25/23
+//  Purpose: Find the index of each element of a set of intger keys in a value set.
+//****************************************************************
 #include<fstream>  // For file stream manipulation
 #include<iostream> // For cin & cout
 #include<stdlib.h> // Streller you said always include this
@@ -50,7 +60,14 @@ string GetKeyFile()
     //Initializes Variables
     string KeyFileName; // It's namesake
     cout << "Please input Key File Path: ";
-    cin >> KeyFileName;
+    char CurrentStreamCharacter = cin.get(); // It's namesake.
+    //Assign file name to KeyFileName even with whitespace
+    while (CurrentStreamCharacter != '\n')
+    {
+        KeyFileName.push_back(CurrentStreamCharacter);
+        CurrentStreamCharacter = cin.get(); // Retrives another character in the stream
+    }
+    //Return value gotten
     //Return value gotten
     return KeyFileName;
 }
@@ -66,11 +83,17 @@ string GetKeyFile()
 string GetValueFile()
 {
     //Initializes Variables
-    string KeyFileName; // It's namesake
+    string ValueFileName; // It's namesake
     cout << "Please input Value File Path: ";
-    cin >> KeyFileName;
+    char CurrentStreamCharacter = cin.get(); // It's namesake.
+    //Assign file name to ValueFileName even with whitespace
+    while (CurrentStreamCharacter != '\n')
+    {
+        ValueFileName.push_back(CurrentStreamCharacter);
+        CurrentStreamCharacter = cin.get(); // Retrives another character in the stream
+    }
     //Return value gotten
-    return KeyFileName;
+    return ValueFileName;
 }
 
 //****************************************************************
