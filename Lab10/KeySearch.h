@@ -15,8 +15,13 @@
 using namespace std;
 string GetKeyFile(); // Gets the keyfile name
 string GetValueFile(); // Gets the value file name
-void MakeValueArray(int Value[], fstream File); // Getting Array from value file
-void SortArray(int Value[]); // Array to sort
+void MakeValueArray(int Value[], // Array to make 
+                    int SIZE, // Size of Array
+                    fstream& File // Value File
+                    ); // Getting Array from value file
+void SortArray(int Value[], // The array to be sorted
+               int Size // Size of array
+                ); // Array to sort
 int BinarySearch( int Key, // Value you're looking for
                    int Left, // Left bound in a Binary Search
                    int Right, // Right bound in a Binary Search

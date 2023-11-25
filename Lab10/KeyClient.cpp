@@ -13,25 +13,24 @@ using namespace std;
 // Non-local variables used: 
 // Functions Called: std::swap & std::sizeof
 //****************************************************************
-void SortArray(int Value[])
+void SortArray(int Value[], int Size)
 {
-    int Size = sizeof(Value)/sizeof(Value[0]); // Size of array
     // Selection Sort                           
     for(int i = 0; i < Size; i++) 
     {
-        int SmallestNumberIndex; // Index of Smallest Number in the array
+        int SmallestNumberIndex = i; // Index of Smallest Number in the array
         for(int j = i; j < Size-1; j++)
         {
             // Checking if the current smallest number is the smallest
-            if(Value[j] > Value[j+1])
+            if(Value[SmallestNumberIndex] > Value[j+1])
             {
-                SmallestNumberIndex = Value[j+1];
+                SmallestNumberIndex = j+1;
                 // Checks if this is end of the list. 
                 // Then swaps smallest number with the first value of the unsorted list.
-                if(j == Size - 2)
-                {
-                    swap(Value[SmallestNumberIndex], Value[j+1]); 
-                }
+            }
+            if(j == Size - 2)
+            {
+                swap(Value[i], Value[SmallestNumberIndex]); 
             }
         }
         
@@ -49,6 +48,7 @@ string GetKeyFile()
 {
     //Initializes Variables
     string KeyFileName; // It's namesake
+    cout << "Please input Key File Name: ";
     cin >> KeyFileName;
     //Return value gotten
     return KeyFileName;
@@ -65,6 +65,7 @@ string GetValueFile()
 {
     //Initializes Variables
     string KeyFileName; // It's namesake
+    cout << "Please input Value File Name: ";
     cin >> KeyFileName;
     //Return value gotten
     return KeyFileName;
@@ -74,16 +75,15 @@ string GetValueFile()
 // Function Name: MakeValueArray
 // Purpose: 
 // Parameters: 
-//      Input: Array and the value file
+//      Input: Array, Array Size, and the value file
 //      Input & Output:
 //      Output:
 // Return Value: Makes array from the value file values
 // Non-local variables used: None lol
 // Functions Called: std::sizeof
 //****************************************************************
-void MakeValueArray(int Value[], fstream File)
+void MakeValueArray(int Value[], int Size, fstream& File)
 {
-    int Size = sizeof(Value) / sizeof(Value[0]); // Size of array
     for(int i = 0; i < Size; i++) 
     {
         File >> Value[i];

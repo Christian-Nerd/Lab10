@@ -10,15 +10,17 @@
 //****************************************************************
 
 #include "KeySearch.h"
+const int SIZE = 100;
 int main()
 {
     // Initilization Variables
     fstream ValueFile, KeyFile; // Make Valuefile and Keyfile handles
-    int SortedList[100];
-    // Find the keys and values make a asorted array with the values and find if the kids are in the array
-    ValueFile.open(GetKeyFile().c_str(), ios::in | ios::out);
-    KeyFile.open(GetValueFile().c_str(), ios::in | ios::out);
-    SortArray(SortedList);
+    int SortedList[SIZE];
+    // Find the keys and values make a asorted array with the values and find if the keys are in the array
+    ValueFile.open(GetValueFile().c_str(), ios::in | ios::out);
+    KeyFile.open(GetKeyFile().c_str(), ios::in | ios::out);
+    MakeValueArray(SortedList, SIZE, ValueFile);
+    SortArray(SortedList, SIZE);
     while (!KeyFile.eof())
     {
         int CurrentKey; // Current key in the keyfile
@@ -27,11 +29,11 @@ int main()
         // Outputs the proper result after getting the result of the binarysearch
         if (KeyIndex < 0)
         {
-            cout << " Key value " << CurrentKey << " was not located in the sorted array.";
+            cout << " Key value " << CurrentKey << " was not located in the sorted array." << endl;
         }
         else
         {
-            cout << " Key value " << CurrentKey << " was located at " << KeyIndex << " in the sorted array.";
+            cout << " Key value " << CurrentKey << " was located at " << KeyIndex << " in the sorted array." << endl;
         }
     }
     return 0;
