@@ -39,6 +39,7 @@ void SortArray(int Value[], int Size)
 
 //****************************************************************
 // Function Name: GetKeyFile
+// Purpose: Gets Key File Path
 // Parameters: None
 // Return Value: File name of keyfile
 // Non-local variables used: None lol
@@ -48,7 +49,7 @@ string GetKeyFile()
 {
     //Initializes Variables
     string KeyFileName; // It's namesake
-    cout << "Please input Key File Name: ";
+    cout << "Please input Key File Path: ";
     cin >> KeyFileName;
     //Return value gotten
     return KeyFileName;
@@ -56,6 +57,7 @@ string GetKeyFile()
 
 //****************************************************************
 // Function Name: GetValueFile
+// Purpose: Gets Value File Path
 // Parameters: None
 // Return Value: File name of valuefile
 // Non-local variables used: None lol
@@ -65,7 +67,7 @@ string GetValueFile()
 {
     //Initializes Variables
     string KeyFileName; // It's namesake
-    cout << "Please input Value File Name: ";
+    cout << "Please input Value File Path: ";
     cin >> KeyFileName;
     //Return value gotten
     return KeyFileName;
@@ -73,7 +75,7 @@ string GetValueFile()
 
 //****************************************************************
 // Function Name: MakeValueArray
-// Purpose: 
+// Purpose: Makes an array from the value file
 // Parameters: 
 //      Input: Array, Array Size, and the value file
 //      Input & Output:
@@ -98,6 +100,38 @@ void MakeValueArray(int Value[], int Size, fstream& File)
     }
     File.seekg(ios::beg); // Put file back in it's first position after you make the array.
 }
+
+
+//***************************************************************
+// Function Name: CheckIfValidFile
+// Purpose: Checks if the "opened" key or value file actually opened and error checks if not
+// Parameters: 
+//      Input: fstream File, char TypeOfFile
+//      Input & Output: None
+//      Output: None
+// Return Value: None
+// Non-local variabels used: none
+// Functions Called: istream.open(), string.c_str(), GetKeyFile(), GetValueFile()
+//***************************************************************
+void CheckIfValidFile(fstream& File, char TypeOfFile) 
+{
+    while (!File) 
+    {
+        cerr << "Invalid File Path please reenter file path" << endl;
+        switch (TypeOfFile) 
+        {
+            case 'k': 
+                File.clear();
+                File.open(GetKeyFile().c_str(), ios::in | ios::out);
+                break;
+
+            case 'v': 
+                File.clear();
+                File.open(GetValueFile().c_str(), ios::in | ios::out);
+                break;
+        }
+    }
+}
 //****************************************************************
 // Function Name: Binary Search
 // Purpose: Search the array for a specific key value and return it's location
@@ -107,7 +141,7 @@ void MakeValueArray(int Value[], int Size, fstream& File)
 //    Output: 
 // Return Value: int 
 // Non-local Variables Used: None
-// Functions Called: std::swap & std::sizeof()
+// Functions Called: std::swap
 //****************************************************************
 int BinarySearch( int Key, int Left, int Right, int List[])
 {
@@ -124,7 +158,7 @@ int BinarySearch( int Key, int Left, int Right, int List[])
         }
         else if(Key < List[Mid])
         {
-            Right = List[Mid] - 1;
+            Right = Mid - 1;
             continue;
         }
     }

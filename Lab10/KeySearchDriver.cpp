@@ -17,8 +17,10 @@ int main()
     fstream ValueFile, KeyFile; // Make Valuefile and Keyfile handles
     int SortedList[SIZE];
     // Find the keys and values make a asorted array with the values and find if the keys are in the array
-    ValueFile.open(GetValueFile().c_str(), ios::in | ios::out);
+    ValueFile.open(GetValueFile().c_str(), ios::in | ios::out); // Open file
+    CheckIfValidFile(ValueFile, 'v');
     KeyFile.open(GetKeyFile().c_str(), ios::in | ios::out);
+    CheckIfValidFile(KeyFile, 'k');
     MakeValueArray(SortedList, SIZE, ValueFile);
     SortArray(SortedList, SIZE);
     while (!KeyFile.eof())

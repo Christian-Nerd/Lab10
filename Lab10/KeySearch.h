@@ -19,6 +19,9 @@ void MakeValueArray(int Value[], // Array to make
                     int SIZE, // Size of Array
                     fstream& File // Value File
                     ); // Getting Array from value file
+void CheckIfValidFile(fstream& File, // File to check if valid
+                      char TypeOfFile // Tells you if the file is a key or value file.
+                     );
 void SortArray(int Value[], // The array to be sorted
                int Size // Size of array
                 ); // Array to sort
